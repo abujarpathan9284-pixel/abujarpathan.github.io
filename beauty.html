@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty | StyleHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #ff3f6c;
+            --secondary: #333;
+            --light: #f5f5f6;
+            --dark: #282c3f;
+            --gray: #696e79;
+            --success: #03a685;
+            --beauty-accent: #ec4899;
+            --beauty-secondary: #a855f7;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            background-color: var(--light);
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-icons a {
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .nav-icons i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            padding: 12px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a.active {
+            color: var(--beauty-accent);
+            border-bottom: 2px solid var(--beauty-accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--beauty-accent);
+        }
+
+        /* Beauty Hero Section */
+        .beauty-hero {
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .beauty-hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .beauty-hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: var(--beauty-accent);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #db2777;
+            transform: translateY(-2px);
+        }
+
+        .beauty-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+        }
+
+        /* Filters Sidebar */
+        .filters-sidebar {
+            width: 280px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .filter-section {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .filter-section:last-child {
+            border-bottom: none;
+        }
+
+        .filter-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-options {
+            list-style: none;
+        }
+
+        .filter-options li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .filter-options input {
+            margin-right: 10px;
+        }
+
+        .filter-options label {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .color-option {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .price-range {
+            width: 100%;
+        }
+
+        .price-inputs {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .price-inputs input {
+            width: 45%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Products Section */
+        .products-main {
+            flex: 1;
+        }
+
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .results-count {
+            font-size: 16px;
+            color: var(--gray);
+        }
+
+        .sort-options {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sort-options select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            background: white;
+        }
+
+        .view-btn.active {
+            border-color: var(--beauty-accent);
+            color: var(--beauty-accent);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--beauty-accent);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            color: var(--dark);
+            z-index: 2;
+        }
+
+        .wishlist-btn:hover, .wishlist-btn.active {
+            background: var(--beauty-accent);
+            color: white;
+        }
+
+        .product-img {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-brand {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .product-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 16px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            color: var(--beauty-accent);
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .original-price {
+            color: var(--gray);
+            text-decoration: line-through;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .discount {
+            color: var(--success);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--beauty-accent);
+        }
+
+        /* Categories Section */
+        .categories-section {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            font-size: 28px;
+            color: var(--dark);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-img {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .category-content {
+            padding: 15px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .category-content h3 {
+            margin-bottom: 5px;
+        }
+
+        /* Skin & Hair Types Section */
+        .skin-section {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .skin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skin-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+
+        .skin-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skin-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .skin-content {
+            padding: 15px;
+            background-color: white;
+        }
+
+        .skin-content h3 {
+            margin-bottom: 10px;
+            color: var(--beauty-accent);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 5% 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #f5f5f5;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #b8b8b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--beauty-accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b8b8b8;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-header {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .search-bar {
+                width: 100%;
+                margin: 15px 0;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                margin: 5px 10px;
+                font-size: 12px;
+            }
+
+            .beauty-container {
+                flex-direction: column;
+            }
+
+            .filters-sidebar {
+                width: 100%;
+            }
+
+            .products-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .sort-options {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .beauty-hero {
+                height: 300px;
+            }
+
+            .beauty-hero-content h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <p>FLAT 50% OFF ON FIRST ORDER | FREE SHIPPING ON ORDERS ABOVE ₹499</p>
+        </div>
+        <div class="main-header">
+            <a href="index.html" class="logo">
+                <i class="fas fa-crown"></i>
+                <span>StyleHub</span>
+            </a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for makeup, skincare and more...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="nav-icons">
+                <a href="profile.html">
+                    <i class="far fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="wishlist.html">
+                    <i class="far fa-heart"></i>
+                    <span>Wishlist</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Bag</span>
+                </a>
+            </div>
+        </div>
+       <div class="nav-links">
+            <a href="men.html">Men</a>
+            <a href="women.html">Women</a>
+            <a href="kids.html">Kids</a>
+            <a href="home_living.html" >Home & Living</a>
+            <a href="beauty.html" class="active">Beauty</a>
+            <a href="studio.html">Studio</a>
+            <a href="new_arrivals.html">New Arrivals</a>
+            <a href="brands.html">Brands</a>
+        </div>
+    </header>
+
+    <!-- Beauty Hero Section -->
+    <section class="beauty-hero">
+        <div class="beauty-hero-content">
+            <h1>Beauty Collection</h1>
+            <p>Discover your perfect beauty routine</p>
+            <button class="cta-button">SHOP NEW ARRIVALS</button>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <div class="categories-section">
+        <h2 class="section-title">Shop By Category</h2>
+        <div class="categories-grid">
+            <a href="#" class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1187&q=80');"></div>
+                <div class="category-content">
+                    <h3>Makeup</h3>
+                    <p>Lipstick, Foundation & More</p>
+                </div>
+            </a>
+            <a href="#" class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
+                <div class="category-content">
+                    <h3>Skincare</h3>
+                    <p>Serums, Moisturizers & More</p>
+                </div>
+            </a>
+            <a href="#" class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');"></div>
+                <div class="category-content">
+                    <h3>Hair Care</h3>
+                    <p>Shampoo, Conditioner & More</p>
+                </div>
+            </a>
+            <a href="#" class="category-card">
+                <div class="category-img" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');"></div>
+                <div class="category-content">
+                    <h3>Fragrance</h3>
+                    <p>Perfumes, Body Mists & More</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Skin & Hair Types Section -->
+    <div class="skin-section">
+        <h2 class="section-title">Shop By Concern</h2>
+        <div class="skin-grid">
+            <a href="#" class="skin-card">
+                <div class="skin-img" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
+                <div class="skin-content">
+                    <h3>Dry Skin</h3>
+                    <p>Hydrating products for dry skin</p>
+                </div>
+            </a>
+            <a href="#" class="skin-card">
+                <div class="skin-img" style="background-image: url('https://images.unsplash.com/photo-1570194065650-2c0c15ca0d5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                <div class="skin-content">
+                    <h3>Oily Skin</h3>
+                    <p>Oil-control and mattifying products</p>
+                </div>
+            </a>
+            <a href="#" class="skin-card">
+                <div class="skin-img" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');"></div>
+                <div class="skin-content">
+                    <h3>Hair Fall</h3>
+                    <p>Products to reduce hair fall</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Beauty Products Section -->
+    <div class="beauty-container">
+        <!-- Filters Sidebar -->
+        <div class="filters-sidebar">
+            <div class="filter-section">
+                <div class="filter-title">
+                    <span>CATEGORIES</span>
+                </div>
+                <ul class="filter-options">
+                    <li><input type="checkbox" id="makeup"><label for="makeup">Makeup</label></li>
+                    <li><input type="checkbox" id="skincare"><label for="skincare">Skincare</label></li>
+                    <li><input type="checkbox" id="haircare"><label for="haircare">Hair Care</label></li>
+                    <li><input type="checkbox" id="fragrance"><label for="fragrance">Fragrance</label></li>
+                    <li><input type="checkbox" id="bath"><label for="bath">Bath & Body</label></li>
+                    <li><input type="checkbox" id="tools"><label for="tools">Beauty Tools</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">
+                    <span>BRAND</span>
+                </div>
+                <ul class="filter-options">
+                    <li><input type="checkbox" id="lakme"><label for="lakme">Lakme</label></li>
+                    <li><input type="checkbox" id="maybelline"><label for="maybelline">Maybelline</label></li>
+                    <li><input type="checkbox" id="loreal"><label for="loreal">L'Oreal</label></li>
+                    <li><input type="checkbox" id="huda"><label for="huda">Huda Beauty</label></li>
+                    <li><input type="checkbox" id="mamaearth"><label for="mamaearth">Mamaearth</label></li>
+                    <li><input type="checkbox" id="nykaa"><label for="nykaa">Nykaa</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">
+                    <span>PRICE</span>
+                </div>
+                <input type="range" class="price-range" min="0" max="5000" value="2500">
+                <div class="price-inputs">
+                    <input type="number" placeholder="Min" value="0">
+                    <input type="number" placeholder="Max" value="5000">
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">
+                    <span>SHADE</span>
+                </div>
+                <ul class="filter-options">
+                    <li><input type="checkbox" id="fair"><label for="fair"><div class="color-option" style="background-color: #fef3c7;"></div> Fair</label></li>
+                    <li><input type="checkbox" id="medium"><label for="medium"><div class="color-option" style="background-color: #d97706;"></div> Medium</label></li>
+                    <li><input type="checkbox" id="tan"><label for="tan"><div class="color-option" style="background-color: #92400e;"></div> Tan</label></li>
+                    <li><input type="checkbox" id="deep"><label for="deep"><div class="color-option" style="background-color: #451a03;"></div> Deep</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-title">
+                    <span>SKIN TYPE</span>
+                </div>
+                <ul class="filter-options">
+                    <li><input type="checkbox" id="dry"><label for="dry">Dry Skin</label></li>
+                    <li><input type="checkbox" id="oily"><label for="oily">Oily Skin</label></li>
+                    <li><input type="checkbox" id="combination"><label for="combination">Combination</label></li>
+                    <li><input type="checkbox" id="sensitive"><label for="sensitive">Sensitive</label></li>
+                    <li><input type="checkbox" id="normal"><label for="normal">Normal</label></li>
+                </ul>
+            </div>
+
+            <button class="cta-button" style="width: 100%; margin-top: 10px;">APPLY FILTERS</button>
+        </div>
+
+        <!-- Products Main -->
+        <div class="products-main">
+            <div class="products-header">
+                <div class="results-count">Showing 1-12 of 245 products</div>
+                <div class="sort-options">
+                    <span>Sort by:</span>
+                    <select>
+                        <option>Recommended</option>
+                        <option>What's New</option>
+                        <option>Popularity</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                    </select>
+                    <div class="view-options">
+                        <button class="view-btn active"><i class="fas fa-th"></i></button>
+                        <button class="view-btn"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge">NEW</div>
+                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1187&q=80');"></div>
+                    <div class="product-info">
+                        <div class="product-brand">Lakme</div>
+                        <h3 class="product-title">Absolute Matte Revolution Lipstick - Red Carpet</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(428)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="original-price">₹799</span>
+                            ₹599 <span class="discount">(25% OFF)</span>
+                        </div>
+                        <button class="add-to-cart">ADD TO BAG</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge">BESTSELLER</div>
+                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80');"></div>
+                    <div class="product-info">
+                        <div class="product-brand">Mamaearth</div>
+                        <h3 class="product-title">Vitamin C Face Serum with Vitamin C & Turmeric</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(312)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="original-price">₹899</span>
+                            ₹699 <span class="discount">(22% OFF)</span>
+                        </div>
+                        <button class="add-to-cart">ADD TO BAG</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80');"></div>
+                    <div class="product-info">
+                        <div class="product-brand">L'Oreal</div>
+                        <h3 class="product-title">Total Repair 5 Shampoo - For Damaged Hair</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(567)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="original-price">₹649</span>
+                            ₹519 <span class="discount">(20% OFF)</span>
+                        </div>
+                        <button class="add-to-cart">ADD TO BAG</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-badge">LIMITED</div>
+                    <button class="wishlist-btn"><i class="far fa-heart"></i></button>
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1180&q=80');"></div>
+                    <div class="product-info">
+                        <div class="product-brand">Huda Beauty</div>
+                        <h3 class="product-title">Kayali Eden Juicy Apple Perfume - 50ml</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(189)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="original-price">₹4,999</span>
+                            ₹3,999 <span class="discount">(20% OFF)</span>
+                        </div>
+                        <button class="add-to-cart">ADD TO BAG</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>ONLINE SHOPPING</h3>
+                <ul>
+                    <li><a href="men.html">Men</a></li>
+                    <li><a href="women.html">Women</a></li>
+                    <li><a href="kids.html">Kids</a></li>
+                    <li><a href="home-living.html">Home & Living</a></li>
+                    <li><a href="#">Beauty</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CUSTOMER POLICIES</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">T&C</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>EXPERIENCE APP</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>KEEP IN TOUCH</h3>
+                <p>Subscribe to our newsletter for the latest updates and offers</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 StyleHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wishlist buttons
+            const wishlistButtons = document.querySelectorAll('.wishlist-btn');
+            
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.classList.add('active');
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Add to cart buttons
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.closest('.product-card');
+                    const productName = product.querySelector('.product-title').textContent;
+                    
+                    // Change button text temporarily
+                    const originalText = this.textContent;
+                    this.textContent = 'ADDED TO BAG!';
+                    this.style.backgroundColor = '#03a685';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.backgroundColor = '';
+                    }, 2000);
+                    
+                    console.log(`Added to cart: ${productName}`);
+                });
+            });
+            
+            // View options
+            const viewButtons = document.querySelectorAll('.view-btn');
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    viewButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // In a real app, this would change the product layout
+                    if (this.querySelector('.fa-list')) {
+                        alert('Switching to list view');
+                    } else {
+                        alert('Switching to grid view');
+                    }
+                });
+            });
+            
+            // Filter apply button
+            const applyFiltersBtn = document.querySelector('.filters-sidebar .cta-button');
+            
+            applyFiltersBtn.addEventListener('click', function() {
+                alert('Applying selected filters...');
+            });
+            
+            // CTA button
+            const ctaButton = document.querySelector('.beauty-hero .cta-button');
+            
+            ctaButton.addEventListener('click', function() {
+                alert('Redirecting to new arrivals...');
+            });
+        });
+    </script>
+</body>
+</html>

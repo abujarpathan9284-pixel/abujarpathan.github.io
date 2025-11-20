@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands | StyleHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #ff3f6c;
+            --secondary: #333;
+            --light: #f5f5f6;
+            --dark: #282c3f;
+            --gray: #696e79;
+            --success: #03a685;
+            --brands-accent: #7c3aed;
+            --brands-secondary: #06b6d4;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar {
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            background-color: var(--light);
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-icons a {
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .nav-icons i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            padding: 12px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .nav-links a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a.active {
+            color: var(--brands-accent);
+            border-bottom: 2px solid var(--brands-accent);
+        }
+
+        .nav-links a:hover {
+            color: var(--brands-accent);
+        }
+
+        /* Brands Hero Section */
+        .brands-hero {
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .brands-hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .brands-hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: var(--brands-accent);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #6d28d9;
+            transform: translateY(-2px);
+        }
+
+        .brands-container {
+            max-width: 1200px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        /* Brands Navigation */
+        .brands-nav {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .brands-nav h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: var(--dark);
+        }
+
+        .brand-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .brand-category {
+            padding: 10px 20px;
+            background: var(--light);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .brand-category.active {
+            background: var(--brands-accent);
+            color: white;
+        }
+
+        .brand-category:hover {
+            background: var(--brands-accent);
+            color: white;
+        }
+
+        /* Featured Brands Section */
+        .featured-brands {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 40px 0 30px;
+            font-size: 28px;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .brand-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .brand-logo {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: var(--light);
+        }
+
+        .brand-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        .brand-content {
+            padding: 20px;
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--brands-accent);
+        }
+
+        .brand-description {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .brand-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+            padding: 10px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--brands-accent);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .brand-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-collection-btn {
+            flex: 1;
+            background: var(--brands-accent);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .view-collection-btn:hover {
+            background: #6d28d9;
+        }
+
+        .follow-btn {
+            width: 40px;
+            background: var(--light);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .follow-btn:hover, .follow-btn.following {
+            background: var(--brands-accent);
+            color: white;
+        }
+
+        /* Popular Brands Section */
+        .popular-brands {
+            margin-bottom: 50px;
+        }
+
+        .brands-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scrollbar-width: thin;
+        }
+
+        .brands-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .brands-scroll::-webkit-scrollbar-track {
+            background: var(--light);
+            border-radius: 3px;
+        }
+
+        .brands-scroll::-webkit-scrollbar-thumb {
+            background: var(--brands-accent);
+            border-radius: 3px;
+        }
+
+        .popular-brand-card {
+            min-width: 200px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .popular-brand-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .popular-brand-logo {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .popular-brand-logo img {
+            max-width: 100%;
+            max-height: 50px;
+            object-fit: contain;
+        }
+
+        .popular-brand-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .popular-brand-category {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        /* Brand Spotlight Section */
+        .brand-spotlight {
+            margin-bottom: 50px;
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .spotlight-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .spotlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .spotlight-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .spotlight-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+        }
+
+        .spotlight-brand {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .spotlight-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .spotlight-content {
+            padding: 20px;
+        }
+
+        .spotlight-description {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .spotlight-features {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .spotlight-features li {
+            padding: 5px 0;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .spotlight-features li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .spotlight-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .shop-now-btn {
+            flex: 1;
+            background: var(--brands-accent);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .shop-now-btn:hover {
+            background: #6d28d9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 5% 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #f5f5f5;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #b8b8b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--brands-accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b8b8b8;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-header {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            .search-bar {
+                width: 100%;
+                margin: 15px 0;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                margin: 5px 10px;
+                font-size: 12px;
+            }
+
+            .brands-hero {
+                height: 300px;
+            }
+
+            .brands-hero-content h1 {
+                font-size: 36px;
+            }
+
+            .brand-categories {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spotlight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-actions {
+                flex-direction: column;
+            }
+
+            .follow-btn {
+                width: 100%;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="top-bar">
+            <p>FLAT 50% OFF ON FIRST ORDER | FREE SHIPPING ON ORDERS ABOVE ₹499</p>
+        </div>
+        <div class="main-header">
+            <a href="index.html" class="logo">
+                <i class="fas fa-crown"></i>
+                <span>StyleHub</span>
+            </a>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for brands and collections...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="nav-icons">
+                <a href="profile.html">
+                    <i class="far fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="wishlist.html">
+                    <i class="far fa-heart"></i>
+                    <span>Wishlist</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Bag</span>
+                </a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="men.html">Men</a>
+            <a href="women.html">Women</a>
+            <a href="kids.html">Kids</a>
+            <a href="home-living.html">Home & Living</a>
+            <a href="beauty.html">Beauty</a>
+            <a href="studio.html">Studio</a>
+            <a href="new-arrivals.html">New Arrivals</a>
+            <a href="brands.html" class="active">Brands</a>
+        </div>
+    </header>
+
+    <!-- Brands Hero Section -->
+    <section class="brands-hero">
+        <div class="brands-hero-content">
+            <h1>Our Brands</h1>
+            <p>Discover premium fashion brands and exclusive collections</p>
+            <button class="cta-button">EXPLORE BRANDS</button>
+        </div>
+    </section>
+
+    <!-- Brands Navigation -->
+    <div class="brands-container">
+        <div class="brands-nav">
+            <h2>Browse Brands By Category</h2>
+            <div class="brand-categories">
+                <button class="brand-category active">All Brands</button>
+                <button class="brand-category">Luxury</button>
+                <button class="brand-category">Premium</button>
+                <button class="brand-category">Contemporary</button>
+                <button class="brand-category">Streetwear</button>
+                <button class="brand-category">Sustainable</button>
+                <button class="brand-category">Indian</button>
+                <button class="brand-category">International</button>
+            </div>
+        </div>
+
+        <!-- Featured Brands Section -->
+        <div class="featured-brands">
+            <h2 class="section-title">Featured Brands</h2>
+            <p class="section-subtitle">Discover our most popular and exclusive fashion brands</p>
+            
+            <div class="brands-grid">
+                <!-- Brand 1 -->
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <!-- Using text as logo placeholder -->
+                        <div style="font-size: 24px; font-weight: bold; color: #ff3f6c;">ZARA</div>
+                    </div>
+                    <div class="brand-content">
+                        <h3 class="brand-name">ZARA</h3>
+                        <p class="brand-description">Spanish fast fashion brand known for trendy, affordable clothing and accessories for men, women and children.</p>
+                        <div class="brand-stats">
+                            <div class="stat">
+                                <div class="stat-number">1.2K+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.8</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                        </div>
+                        <div class="brand-actions">
+                            <button class="view-collection-btn">VIEW COLLECTION</button>
+                            <button class="follow-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand 2 -->
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <div style="font-size: 24px; font-weight: bold; color: #000;">H&M</div>
+                    </div>
+                    <div class="brand-content">
+                        <h3 class="brand-name">H&M</h3>
+                        <p class="brand-description">Swedish multinational clothing company known for its fast-fashion clothing for men, women, teenagers and children.</p>
+                        <div class="brand-stats">
+                            <div class="stat">
+                                <div class="stat-number">980+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.6</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                        </div>
+                        <div class="brand-actions">
+                            <button class="view-collection-btn">VIEW COLLECTION</button>
+                            <button class="follow-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brand 3 -->
+                <div class="brand-card">
+                    <div class="brand-logo">
+                        <div style="font-size: 24px; font-weight: bold; color: #e4002b;">NIKE</div>
+                    </div>
+                    <div class="brand-content">
+                        <h3 class="brand-name">NIKE</h3>
+                        <p class="brand-description">American multinational corporation that designs, develops and markets athletic footwear, apparel, and accessories.</p>
+                        <div class="brand-stats">
+                            <div class="stat">
+                                <div class="stat-number">750+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.9</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                        </div>
+                        <div class="brand-actions">
+                            <button class="view-collection-btn">VIEW COLLECTION</button>
+                            <button class="follow-btn"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Brands Section -->
+        <div class="popular-brands">
+            <h2 class="section-title">Popular Brands</h2>
+            <p class="section-subtitle">Shop from our most loved fashion brands</p>
+            
+            <div class="brands-scroll">
+                <!-- Popular Brand 1 -->
+                <div class="popular-brand-card">
+                    <div class="popular-brand-logo">
+                        <div style="font-size: 18px; font-weight: bold; color: #000;">Levi's</div>
+                    </div>
+                    <h4 class="popular-brand-name">Levi's</h4>
+                    <div class="popular-brand-category">Denim & Casual</div>
+                </div>
+
+                <!-- Popular Brand 2 -->
+                <div class="popular-brand-card">
+                    <div class="popular-brand-logo">
+                        <div style="font-size: 18px; font-weight: bold; color: #000;">Adidas</div>
+                    </div>
+                    <h4 class="popular-brand-name">Adidas</h4>
+                    <div class="popular-brand-category">Sportswear</div>
+                </div>
+
+                <!-- Popular Brand 3 -->
+                <div class="popular-brand-card">
+                    <div class="popular-brand-logo">
+                        <div style="font-size: 18px; font-weight: bold; color: #000;">Mango</div>
+                    </div>
+                    <h4 class="popular-brand-name">Mango</h4>
+                    <div class="popular-brand-category">Women's Fashion</div>
+                </div>
+
+                <!-- Popular Brand 4 -->
+                <div class="popular-brand-card">
+                    <div class="popular-brand-logo">
+                        <div style="font-size: 18px; font-weight: bold; color: #000;">Forever 21</div>
+                    </div>
+                    <h4 class="popular-brand-name">Forever 21</h4>
+                    <div class="popular-brand-category">Fast Fashion</div>
+                </div>
+
+                <!-- Popular Brand 5 -->
+                <div class="popular-brand-card">
+                    <div class="popular-brand-logo">
+                        <div style="font-size: 18px; font-weight: bold; color: #000;">Puma</div>
+                    </div>
+                    <h4 class="popular-brand-name">Puma</h4>
+                    <div class="popular-brand-category">Sportswear</div>
+                </div>
+
+                <!-- Popular Brand 6 -->
+                <div class="popular-brand-card">
+                    <div class="popular-brand-logo">
+                        <div style="font-size: 18px; font-weight: bold; color: #000;">Allen Solly</div>
+                    </div>
+                    <h4 class="popular-brand-name">Allen Solly</h4>
+                    <div class="popular-brand-category">Formal Wear</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brand Spotlight Section -->
+        <div class="brand-spotlight">
+            <h2 class="section-title">Brand Spotlight</h2>
+            <p class="section-subtitle">Featured brand stories and exclusive collections</p>
+            
+            <div class="spotlight-grid">
+                <!-- Spotlight 1 -->
+                <div class="spotlight-card">
+                    <div class="spotlight-img" style="background-image: url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80');">
+                        <div class="spotlight-overlay">
+                            <div class="spotlight-brand">H&M</div>
+                            <div class="spotlight-title">Conscious Collection</div>
+                        </div>
+                    </div>
+                    <div class="spotlight-content">
+                        <p class="spotlight-description">Discover H&M's sustainable fashion line made from eco-friendly materials and ethical production practices.</p>
+                        <ul class="spotlight-features">
+                            <li>100% Sustainable Materials</li>
+                            <li>Ethical Production</li>
+                            <li>Carbon Neutral Shipping</li>
+                        </ul>
+                        <div class="spotlight-actions">
+                            <button class="shop-now-btn">SHOP NOW</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spotlight 2 -->
+                <div class="spotlight-card">
+                    <div class="spotlight-img" style="background-image: url('https://images.unsplash.com/photo-1485231183945-fffde7cb34e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80');">
+                        <div class="spotlight-overlay">
+                            <div class="spotlight-brand">ZARA</div>
+                            <div class="spotlight-title">Join Life Collection</div>
+                        </div>
+                    </div>
+                    <div class="spotlight-content">
+                        <p class="spotlight-description">ZARA's commitment to sustainability through their Join Life collection featuring eco-conscious fashion.</p>
+                        <ul class="spotlight-features">
+                            <li>Eco-Friendly Fabrics</li>
+                            <li>Water Conservation</li>
+                            <li>Recycled Materials</li>
+                        </ul>
+                        <div class="spotlight-actions">
+                            <button class="shop-now-btn">SHOP NOW</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spotlight 3 -->
+                <div class="spotlight-card">
+                    <div class="spotlight-img" style="background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=720&q=80');">
+                        <div class="spotlight-overlay">
+                            <div class="spotlight-brand">NIKE</div>
+                            <div class="spotlight-title">Move to Zero</div>
+                        </div>
+                    </div>
+                    <div class="spotlight-content">
+                        <p class="spotlight-description">Nike's journey toward a zero carbon and zero waste future through sustainable innovation in sportswear.</p>
+                        <ul class="spotlight-features">
+                            <li>Recycled Materials</li>
+                            <li>Carbon Reduction</li>
+                            <li>Circity Design</li>
+                        </ul>
+                        <div class="spotlight-actions">
+                            <button class="shop-now-btn">SHOP NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>ONLINE SHOPPING</h3>
+                <ul>
+                    <li><a href="men.html">Men</a></li>
+                    <li><a href="women.html">Women</a></li>
+                    <li><a href="kids.html">Kids</a></li>
+                    <li><a href="home-living.html">Home & Living</a></li>
+                    <li><a href="beauty.html">Beauty</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>CUSTOMER POLICIES</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">T&C</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>EXPERIENCE APP</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>KEEP IN TOUCH</h3>
+                <p>Subscribe to our newsletter for the latest updates and offers</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 StyleHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Brand categories
+            const brandCategories = document.querySelectorAll('.brand-category');
+            
+            brandCategories.forEach(category => {
+                category.addEventListener('click', function() {
+                    brandCategories.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // In a real app, this would filter brands by category
+                    const categoryName = this.textContent;
+                    alert(`Showing brands in: ${categoryName}`);
+                });
+            });
+            
+            // Follow buttons
+            const followButtons = document.querySelectorAll('.follow-btn');
+            
+            followButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    const brandCard = this.closest('.brand-card');
+                    const brandName = brandCard.querySelector('.brand-name').textContent;
+                    
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.classList.add('following');
+                        alert(`Now following ${brandName}`);
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.classList.remove('following');
+                        alert(`Unfollowed ${brandName}`);
+                    }
+                });
+            });
+            
+            // View collection buttons
+            const viewCollectionButtons = document.querySelectorAll('.view-collection-btn');
+            
+            viewCollectionButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const brandCard = this.closest('.brand-card');
+                    const brandName = brandCard.querySelector('.brand-name').textContent;
+                    alert(`Viewing ${brandName} collection...`);
+                });
+            });
+            
+            // Shop now buttons
+            const shopNowButtons = document.querySelectorAll('.shop-now-btn');
+            
+            shopNowButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const spotlightCard = this.closest('.spotlight-card');
+                    const brandName = spotlightCard.querySelector('.spotlight-brand').textContent;
+                    const collectionName = spotlightCard.querySelector('.spotlight-title').textContent;
+                    alert(`Shopping ${collectionName} by ${brandName}...`);
+                });
+            });
+            
+            // Popular brand cards
+            const popularBrandCards = document.querySelectorAll('.popular-brand-card');
+            
+            popularBrandCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const brandName = this.querySelector('.popular-brand-name').textContent;
+                    alert(`Viewing ${brandName} products...`);
+                });
+            });
+            
+            // CTA button
+            const ctaButton = document.querySelector('.brands-hero .cta-button');
+            
+            ctaButton.addEventListener('click', function() {
+                alert('Exploring all brands...');
+            });
+        });
+    </script>
+</body>
+</html>
